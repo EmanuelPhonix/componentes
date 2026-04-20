@@ -1,0 +1,54 @@
+services:
+  componentes:
+    # Nombre del servicio (lo que aparece en logs)
+    build:
+      context: ./componentes
+      dockerfile: Dockerfile
+    
+    # Nombre del contenedor
+    container_name: figma-componentes-dev
+    
+    # Mapear puerto: localhost:5173 → contenedor:5173
+    ports:
+      - "5173:5173"
+    
+    # Volúmenes para desarrollo (hot reload en tiempo real)
+    volumes:
+      # Montar todo el código fuente excepto node_modules
+      - ./componentes:/app
+      - /app/node_modules  # Evitar sobrescribir node_modules del contenedor
+    
+    # Variables de entorno
+    environment:
+      - NODE_ENV=development
+    
+    # Mantener el contenedor corriendo
+    stdin_open: true
+    tty: true
+services:
+  componentes:
+    # Nombre del servicio (lo que aparece en logs)
+    build:
+      context: ./componentes
+      dockerfile: Dockerfile
+    
+    # Nombre del contenedor
+    container_name: figma-componentes-dev
+    
+    # Mapear puerto: localhost:5173 → contenedor:5173
+    ports:
+      - "5173:5173"
+    
+    # Volúmenes para desarrollo (hot reload en tiempo real)
+    volumes:
+      # Montar todo el código fuente excepto node_modules
+      - ./componentes:/app
+      - /app/node_modules  # Evitar sobrescribir node_modules del contenedor
+    
+    # Variables de entorno
+    environment:
+      - NODE_ENV=development
+    
+    # Mantener el contenedor corriendo
+    stdin_open: true
+    tty: true
